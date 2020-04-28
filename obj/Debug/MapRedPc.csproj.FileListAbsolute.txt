@@ -1,0 +1,15 @@
+C:\Users\maglew\source\repos\MapRedPc\bin\Debug\MapRedPc.exe.config
+C:\Users\maglew\source\repos\MapRedPc\bin\Debug\MapRedPc.exe
+C:\Users\maglew\source\repos\MapRedPc\bin\Debug\MapRedPc.pdb
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.csprojAssemblyReference.cache
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.Form1.resources
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.Properties.Resources.resources
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.UserControl1.resources
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.csproj.GenerateResource.cache
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.exe
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.pdb
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.UserControl2.resources
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.csproj.CoreCompileInputs.cache
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.UserControl3.resources
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.EdgeChangeForm.resources
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.RoomChangeForm.resources

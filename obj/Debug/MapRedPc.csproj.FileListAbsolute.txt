@@ -12,4 +12,6 @@ C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.UserControl2.resources
 C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.csproj.CoreCompileInputs.cache
 C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.UserControl3.resources
 C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.EdgeChangeForm.resources
-C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.RoomChangeForm.resources
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.ZoneChangeForm.resources
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.SaveForm.resources
+C:\Users\maglew\source\repos\MapRedPc\obj\Debug\MapRedPc.LoadForm.resources

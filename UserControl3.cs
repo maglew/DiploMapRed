@@ -39,6 +39,10 @@ namespace MapRedPc
             comboBox1.Items.Add("Edge");
             comboBox1.Items.Add("Wall");
             comboBox1.Items.Add("Zone");
+
+            comboBox2.Items.Add("1");
+            comboBox2.Items.Add("2");
+            comboBox2.Items.Add("3");
         }
       
 
@@ -95,7 +99,25 @@ namespace MapRedPc
             MapInterface.regime = "move";
         }
 
-      
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedFloor = (Int32.Parse(comboBox2.SelectedItem.ToString()))-1;
+            DrawMap.selectedfloor = selectedFloor;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            // DrawMap.save();
+            SaveForm saveform = new SaveForm();
+            saveform.Show();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            //DrawMap.load();
+            LoadForm loadlorm = new LoadForm();
+            loadlorm.Show();
+        }
     }
 
 

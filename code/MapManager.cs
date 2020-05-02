@@ -11,19 +11,22 @@ namespace MapRedPc.code
     {
        // MapCamera mapCamera;
         DrawObjects drawObjects;
-        MapInterface mapin;
+      //  DrawMap map;
+       MapInterface mapin;
 
         public MapManager()
         {
             drawObjects = new DrawObjects();
             mapin = new MapInterface();
+             new DrawMap();
             // mapCamera = new MapCamera();
            
         }
 
         public void render(Graphics g)
         {
-            drawObjects.render(g);
+            // drawObjects.render(g);
+            DrawMap.render(g);
             MapCamera.render(g);
             MapInterface.render(g);
         }
@@ -31,9 +34,12 @@ namespace MapRedPc.code
         public void tick()
         {
             MapCamera.tick();
-            drawObjects.tick(MapCamera.getWorldLoc(), MapCamera.size);
+            DrawMap.tick(MapCamera.getWorldLoc(), MapCamera.size);
+            //  drawObjects.tick(MapCamera.getWorldLoc(), MapCamera.size);
             mapin.tick();
         }
+
+
 
     }
 }

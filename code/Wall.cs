@@ -54,6 +54,11 @@ namespace MapRedPc.code
         {
             this.id = id;
         }
-
+        public override String read()
+        {
+            // text = this.location.ToString();
+            return base.read();
+            //return text;
+        }
     }
 }

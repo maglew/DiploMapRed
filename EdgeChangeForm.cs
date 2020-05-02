@@ -13,6 +13,7 @@ namespace MapRedPc
     public partial class EdgeChangeForm : Form
     {
         int objId=-1;
+
         MapElement tempElement;
         public EdgeChangeForm(int objId)
         {
@@ -28,7 +29,7 @@ namespace MapRedPc
             textBox1.Text = objId.ToString();
             MapInterface.opened = true;
             MapInterface.schot++;
-                tempElement = DrawObjects.getElement(objId);
+                tempElement = DrawMap.floors[DrawMap.selectedfloor].drawObjects.getElement(objId);
                 textBox2.Text = tempElement.location.X.ToString();
                 textBox5.Text = tempElement.location.Y.ToString();
                 textBox7.Text = tempElement.relativeLocation.X.ToString();
@@ -55,7 +56,7 @@ namespace MapRedPc
         {
            
                 tempElement.location = new Point(Int32.Parse(textBox2.Text), Int32.Parse(textBox5.Text));
-                DrawObjects.setElement(tempElement);
+            DrawMap.floors[DrawMap.selectedfloor].drawObjects.setElement(tempElement);
             
            
            
@@ -67,7 +68,7 @@ namespace MapRedPc
         private void button3_Click(object sender, EventArgs e)
         {
             if (objId != -1)
-                DrawObjects.delobj(DrawObjects.searchObjByCoord(tempElement.relativeLocation));
+          //      DrawObjects.delobj(DrawObjects.searchObjByCoord(tempElement.relativeLocation));
             MapInterface.opened = false;
             MapInterface.chosedObjId = -1;     
             this.Close();

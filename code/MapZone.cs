@@ -101,6 +101,13 @@ touchzone.AddRange(relpoints);
           
         }
 
+        public override String read()
+        {
+            //  text = this.location.ToString();
+            return base.read();
+           // return text;
+        }
+
         public override void render(Graphics g)
         {
           

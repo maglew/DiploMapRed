@@ -60,6 +60,11 @@ namespace MapRedPc.code
             return false;
         }
 
-
+        public override String read()
+        {
+            // text = this.location.ToString();
+            return base.read();
+            //return text;
+        }
     }
 }

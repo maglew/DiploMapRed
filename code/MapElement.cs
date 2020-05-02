@@ -9,8 +9,8 @@ namespace MapRedPc.code
 {
     abstract class MapElement
     {
-       // public Rectangle touchrect = new Rectangle(0, 0, 0, 0);
-
+        // public Rectangle touchrect = new Rectangle(0, 0, 0, 0);
+       protected string text = "";
         public List<Point> touchzone = new List<Point>();
         public List<byte> bordType = new List<byte>();
         
@@ -47,6 +47,20 @@ namespace MapRedPc.code
 
 
         }
+
+        public virtual String read()
+        {
+            text = "";
+            text +="loc="+ this.location.ToString()+"\n";
+            text += "rel=" + this.relativeLocation.ToString() + "\n";
+            text += "del=" + this.deletable.ToString() + "\n";
+            text += "mov=" + this.movable.ToString() + "\n";
+            text += "id=" + this.id.ToString() + "\n";
+            text += "touchz=" + this.touchzone.ToString() + "\n";
+            text += "bordtype=" + this.bordType.ToString() + "\n";
+            return text;
+        }
+
 
         public virtual bool touchhit(Point coord)
         {

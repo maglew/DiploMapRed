@@ -83,6 +83,12 @@ namespace MapRedPc.code
           
         }
 
+        public override String read()
+        {
+            // text = this.location.ToString();
+            return base.read();
+            //return text;
+        }
         public override bool touchhit(Point coord)
         {
 

@@ -42,7 +42,7 @@ namespace MapRedPc.code
     public override void render(Graphics g)
         {
            
-            Pen pen = new Pen(Color.Cyan, 1);
+            Pen pen = new Pen(Color.Black, 1);
             for (int i = 0; i <= rows; i++)
             {
                 g.DrawLine(pen, relativeLocation.X, relativeLocation.Y + templength * i, relativeLocation.X + templength * rows, relativeLocation.Y + templength * i);

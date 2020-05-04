@@ -29,10 +29,13 @@ namespace MapRedPc
         {
             textBox1.Text = mapel.location.X.ToString();
             textBox2.Text = mapel.location.Y.ToString();
+            textBox5.Text = mapel.text.ToString();
+            textBox6.Text = mapel.touchzone.Count.ToString();
         }
         private void button1_Click(object sender, EventArgs e)
         {
             mapel.location = new Point(Int32.Parse(textBox1.Text), Int32.Parse(textBox2.Text));
+            mapel.text = textBox5.Text;
             DrawMap.floors[DrawMap.selectedfloor].drawObjects.setElement(mapel);
             this.Close();
         }

@@ -37,7 +37,7 @@ namespace MapRedPc.code
 
             while (running)
             {
-                g.Clear(Color.Black);
+                g.Clear(Color.Gray);
                 tick();
                 render();
                 fg.DrawImage(btm, new Point(0, 0));

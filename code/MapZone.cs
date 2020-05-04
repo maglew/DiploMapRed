@@ -12,7 +12,7 @@ namespace MapRedPc.code
     class MapZone : MapElement
     {
         int number;
-        String name;
+       // String name="";
        
         public List<Point> locpoints = new List<Point>();
         public List<Point> relpoints = new List<Point>();
@@ -39,7 +39,7 @@ namespace MapRedPc.code
 
 
             relpoints.AddRange(locpoints);
-touchzone.AddRange(relpoints);
+            touchzone.AddRange(relpoints);
 
             for (int k = 0; k < relpoints.Count - 1; k++)
             {
@@ -115,7 +115,11 @@ touchzone.AddRange(relpoints);
             Pen pen2 = new Pen(Color.Blue, 4);
           //  g.DrawPolygon(inPolygon ? pen : pen2, points);
             g.DrawPolygon(Pens.Bisque, touchzone.ToArray());
-          //  g.FillPolygon(inPolygon ? Brushes.Red : Brushes.Blue, relpoints.ToArray());
+            //  g.FillPolygon(inPolygon ? Brushes.Red : Brushes.Blue, relpoints.ToArray());
+            Font fnt = new Font("Arial", 10);
+            SolidBrush brsh = new SolidBrush(Color.Red);
+            g.DrawString( text, fnt, brsh, new Point(relativeLocation.X, relativeLocation.Y));
+
             
 
         }

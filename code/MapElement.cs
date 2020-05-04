@@ -10,7 +10,7 @@ namespace MapRedPc.code
     abstract class MapElement
     {
         // public Rectangle touchrect = new Rectangle(0, 0, 0, 0);
-       protected string text = "";
+       public string text = "";
         public List<Point> touchzone = new List<Point>();
         public List<byte> bordType = new List<byte>();
         

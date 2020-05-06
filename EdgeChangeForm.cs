@@ -73,5 +73,7 @@ namespace MapRedPc
             MapInterface.chosedObjId = -1;     
             this.Close();
         }
+
+       
     }
 }

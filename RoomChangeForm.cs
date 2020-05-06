@@ -11,27 +11,27 @@ using MapRedPc.code;
 
 namespace MapRedPc
 {
-    public partial class ZoneChangeForm : Form
+    public partial class RoomChangeForm : Form
     {
         int objId = -1;
         MapElement mapel;
-        MapZone zone;
-        public ZoneChangeForm(int objId)
+        Room room;
+        public RoomChangeForm(int objId)
         {
             InitializeComponent();
             this.objId = objId;
             mapel = DrawMap.floors[DrawMap.selectedfloor].drawObjects.getElement(objId);
         }
 
-       
-
-        private void ZoneChangeForm_Load(object sender, EventArgs e)
+        private void RoomChangeForm_Load(object sender, EventArgs e)
         {
             textBox1.Text = mapel.location.X.ToString();
             textBox2.Text = mapel.location.Y.ToString();
+
             textBox5.Text = mapel.text.ToString();
             textBox6.Text = mapel.touchzone.Count.ToString();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             mapel.location = new Point(Int32.Parse(textBox1.Text), Int32.Parse(textBox2.Text));
@@ -41,17 +41,9 @@ namespace MapRedPc
             this.Close();
         }
 
-        
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void ZoneChangeForm_FormClosed_1(object sender, FormClosedEventArgs e)
-        {
-            MapInterface.opened = false;
-            MapInterface.chosedObjId = -1;
         }
     }
 }

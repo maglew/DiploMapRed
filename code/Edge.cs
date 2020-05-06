@@ -15,18 +15,25 @@ namespace MapRedPc.code
         byte[] types = { 0, 1, 1, 1 };
         public Edge(Point coord)
         {
-            bordType.AddRange(types);
+          //  bordType.AddRange(types);
             this.movable = true;
             this.id = Guid.NewGuid();
-            this.location = coord;
-            this.relativeLocation = location;
+            location = coord;
+            relativeLocation = location;
+            //locpoints.Add(coord);
+            //relpoints.Add(locpoints[0]);
+            //this.location = coord;
+            //this.relativeLocation = location;
 
             this.touchzone.Add(new Point(relativeLocation.X - width / 2-5, relativeLocation.Y - width / 2-5));
                 this.touchzone.Add(new Point(relativeLocation.X - width / 2 + 5, relativeLocation.Y - width / 2 - 5));
                 this.touchzone.Add(new Point(relativeLocation.X - width / 2 + 5, relativeLocation.Y - width / 2 + 5));
             this.touchzone.Add(new Point(relativeLocation.X - width / 2 - 5, relativeLocation.Y - width / 2 + 5));
 
-            
+            bordType.Add(0);
+            bordType.Add(1);
+            bordType.Add(1);
+            bordType.Add(1);
         }
 
         
@@ -63,7 +70,7 @@ namespace MapRedPc.code
           
             Pen pen = new Pen(Color.Red, 1);
 
-            g.DrawRectangle(pen,relativeLocation.X - width / 4, relativeLocation.Y - width / 4, width / 2, width / 2);
+            g.DrawRectangle(pen, relativeLocation.X - width / 4, relativeLocation.Y - width / 4, width / 2, width / 2);
              pen = new Pen(Color.Pink, 1);
            
               g.DrawPolygon( pen , touchzone.ToArray());

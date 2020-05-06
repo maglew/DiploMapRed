@@ -38,7 +38,7 @@ namespace MapRedPc
 
             comboBox1.Items.Add("Edge");
             comboBox1.Items.Add("Wall");
-            comboBox1.Items.Add("Zone");
+            comboBox1.Items.Add("Room");
 
             comboBox2.Items.Add("1");
             comboBox2.Items.Add("2");

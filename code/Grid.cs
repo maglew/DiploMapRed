@@ -21,8 +21,10 @@ namespace MapRedPc.code
             this.rows = rows;
             this.columns = columns;
             this.length = length;
-            this.location = new Point(0, 0);
-            this.relativeLocation = new Point(0, 0);
+            location=new Point(0, 0);
+            relativeLocation = new Point(0, 0);
+
+
         }
 
         
@@ -31,8 +33,8 @@ namespace MapRedPc.code
 
             base.tick(relLocation, size);
             relativeLocation = new Point(relLocation.X + location.Y, relLocation.Y + location.Y);
-            relativeLocation.X = relativeLocation.X * size;
-            relativeLocation.Y = relativeLocation.Y * size;
+          //  relpoints[0].X = relpoints[0].X * size;
+          //  relpoints[0].Y = relpoints[0].Y * size;
             templength = length * size;
 
 

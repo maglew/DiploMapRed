@@ -10,33 +10,36 @@ namespace MapRedPc.code
 {
     class DrawObjects
     {
-       // public  Grid grid;
+       
 
         public  List<MapElement> elements = new List<MapElement>();
         public  List<Edge> edges = new List<Edge>();
-        public  List<MapZone> zones = new List<MapZone>();
+       // public  List<MapZone> zones = new List<MapZone>();
         public List<Grid> grids = new List<Grid>();
+        public List<Room> rooms = new List<Room>();
+        public List<Wall> walls = new List<Wall>();
+
         public DrawObjects()
         {
-
-        //    addobj();
             rasst();
         }
 
 
         public  void addobj()
         {
-          //  grid = new Grid(10, 10, 50);
+         
         }
 
 
         public  void rasst()
         {
+            elements.Clear();
             elements.AddRange(grids);
             elements.AddRange(edges);
-            elements.AddRange(zones);
-            
-           // elements.Add(grid);
+          //  elements.AddRange(zones);
+            elements.AddRange(rooms);
+            elements.AddRange(walls);
+
         }
 
 
@@ -98,6 +101,7 @@ namespace MapRedPc.code
             return elements[id];
         }
 
+
         public  void moveElement(int id, Point coord)
         {
             elements[id].move(coord);
@@ -116,20 +120,35 @@ namespace MapRedPc.code
 
         public  void addNewEdge(Point coord)
         {
-            elements.Add(new Edge(coord));
+           // elements.Add(new Edge(coord));
+            edges.Add(new Edge(coord));
+            rasst();
         }
 
         public  void addNewZone(Point coord)
         {
-            elements.Add(new MapZone(coord));
+            
+           // elements.Add(new MapZone(coord));
+           
         }
 
-
-       
-        public static void addNewWall(int a, int b)
+        public void addNewRoom(Point coord)
         {
-           // if (a != -1 && b != -1)
-              //  points.get(a).setOneNeighbor(points.get(b));
+           
+            edges.Add(new Edge(new Point(coord.X - 50, coord.Y - 50)));
+            edges.Add(new Edge(new Point(coord.X + 50, coord.Y - 50)));
+            edges.Add(new Edge(new Point(coord.X + 50, coord.Y + 50)));
+            edges.Add(new Edge(new Point(coord.X - 50, coord.Y + 50)));
+
+            rooms.Add(new Room(edges[edges.Count-4], edges[edges.Count - 3], edges[edges.Count - 2], edges[edges.Count - 1]));
+
+            rasst();
+        }
+
+        public  void addNewWall(int a, int b)
+        {
+            walls.Add(new Wall(edges[a-1],edges[b-1]));
+            rasst();
         }
 
 

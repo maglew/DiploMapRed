@@ -69,19 +69,34 @@ namespace MapRedPc.code
             floors[0].drawObjects.edges.Add(new Edge(new Point(200, 200)));
             floors[0].drawObjects.edges.Add(new Edge(new Point(100, 200)));
             floors[0].drawObjects.edges.Add(new Edge(new Point(200, 100)));
-            floors[0].drawObjects.elements.AddRange(floors[0].drawObjects.edges);
-            floors[0].drawObjects.elements.AddRange(floors[0].drawObjects.grids);
+           // floors[0].drawObjects.elements.AddRange(floors[0].drawObjects.edges);
+           // floors[0].drawObjects.elements.AddRange(floors[0].drawObjects.grids);
 
             floors[1].drawObjects.grids.Add(new Grid(10, 10, 50));
-            floors[1].drawObjects.zones.Add(new MapZone(new Point(300, 300)));
-            floors[1].drawObjects.elements.AddRange(floors[1].drawObjects.zones);
-            floors[1].drawObjects.elements.AddRange(floors[1].drawObjects.grids);
+         
+         //   floors[1].drawObjects.elements.AddRange(floors[1].drawObjects.zones);
+         //   floors[1].drawObjects.elements.AddRange(floors[1].drawObjects.grids);
 
             floors[2].drawObjects.grids.Add(new Grid(10, 10, 50));
-            floors[2].drawObjects.edges.Add(new Edge(new Point(0, 0)));
-            floors[2].drawObjects.edges.Add(new Edge(new Point(300, 300)));
-            floors[2].drawObjects.elements.AddRange(floors[2].drawObjects.edges);
-            floors[2].drawObjects.elements.AddRange(floors[2].drawObjects.grids);
+           
+
+            floors[2].drawObjects.edges.Add(new Edge(new Point(100, 100)));
+            floors[2].drawObjects.edges.Add(new Edge(new Point(200, 100)));
+            floors[2].drawObjects.edges.Add(new Edge(new Point(200, 200)));
+            floors[2].drawObjects.edges.Add(new Edge(new Point(100, 200)));
+            
+
+            floors[2].drawObjects.rooms.Add(new Room(floors[2].drawObjects.edges[0], floors[2].drawObjects.edges[1],
+            floors[2].drawObjects.edges[2], floors[2].drawObjects.edges[3]));
+
+            //    floors[2].drawObjects.elements.AddRange(floors[2].drawObjects.rooms);
+            //    floors[2].drawObjects.elements.AddRange(floors[2].drawObjects.edges);
+            //    floors[2].drawObjects.elements.AddRange(floors[2].drawObjects.grids);
+
+
+            floors[0].drawObjects.rasst();
+            floors[1].drawObjects.rasst();
+            floors[2].drawObjects.rasst();
         }
 
        

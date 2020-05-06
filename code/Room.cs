@@ -9,100 +9,155 @@ namespace MapRedPc.code
 {
     class Room : MapElement
     {
-      public  List<Point> locpoints = new List<Point>();
-        public List<Point> rellocpoints = new List<Point>();
-        public List<Point> dest = new List<Point>();
-        public Room(Point A, Point B, Point C, Point D)
+       
+                public List<Wall> walls = new List<Wall>();
+                public List<Edge> edges = new List<Edge>();
+                 public List<Point> dest = new List<Point>();
+      
+
+        public Room(Edge A, Edge B, Edge C, Edge D)
         {
+            location = new Point((A.location.X+ C.location.X)/2, (A.location.Y + C.location.Y) / 2);
+            relativeLocation = location;
+
             this.movable = true;
             this.id = Guid.NewGuid();
-            this.location =A;
-            this.relativeLocation = location;
-            this.locpoints.Add(A);
-            this.locpoints.Add(B);
-            this.locpoints.Add(C);
-            this.locpoints.Add(D);
-            rellocpoints.AddRange(locpoints);
-            for (int k = 0; k < rellocpoints.Count -1; k++)
+            
+            this.edges.Add(A);
+            this.edges.Add(B);
+            this.edges.Add(C);
+            this.edges.Add(D);
+
+            walls.Add(new Wall(A, B));
+            walls.Add(new Wall(B, C));
+            walls.Add(new Wall(C, D));
+            walls.Add(new Wall(D, A));
+
+            touchzone.Add(edges[0].relativeLocation);
+            touchzone.Add(edges[1].relativeLocation);
+            touchzone.Add(edges[2].relativeLocation);
+            touchzone.Add(edges[3].relativeLocation);
+
+            bordType.Add(0);
+            bordType.Add(1);
+            bordType.Add(1);
+            bordType.Add(1);
+
+            dest.Add(new Point(0, 0));
+            dest.Add(new Point(0, 0));
+            dest.Add(new Point(0, 0));
+            dest.Add(new Point(0, 0));
+
+            for (int i = 0; i < dest.Count; i++)
             {
-                dest.Add(new Point(0, 0));
+                dest[i] = new Point(location.X - edges[i].location.X, location.Y - edges[i].location.Y);
             }
         }
+
+       
         public override void tick(Point wordloc, int size)
         {
+           
+          
+            relativeLocation = new Point(wordloc.X + location.X, wordloc.Y + location.Y);
 
-            
-
-            for (int i=0;i<rellocpoints.Count;i++)
+            for (int i = 0; i < dest.Count; i++)
             {
-                rellocpoints[i] = new Point(locpoints[i].X+ wordloc.X, locpoints[i].Y+ wordloc.Y);
-                
-            }
-            //relativeLocation.X = relativeLocation.X * size;
-            //relativeLocation.Y = relativeLocation.Y * size;
-            for (int k = 0; k < rellocpoints.Count-1; k++)
-            {
-                dest[k] = new Point(locpoints[k+1].X - locpoints[0].X, locpoints[k+1].Y - locpoints[0].Y);
+                dest[i] = new Point(location.X - edges[i].location.X, location.Y - edges[i].location.Y);
             }
 
-locpoints[0] = location;
-
-            for (int i = 1; i < rellocpoints.Count; i++)
+            for (int j = 0; j < edges.Count ; j++)
             {
-                locpoints[i] = new Point(locpoints[0].X + dest[i - 1].X, locpoints[0].Y + dest[i - 1].Y);
+                //edges[j].location= new Point(center.X + dest[j].X, center.Y + dest[j].Y);
+                //edges[j].relativeLocation = new Point(wordloc.X + edges[j].location.X,  wordloc.Y + edges[j].location.Y);
+                edges[j].tick(wordloc,size);
 
             }
 
+          
+
+            for (int j = 0; j < walls.Count ; j++)
+            {
+                walls[j].tick(wordloc, size);
+
+            }
+            for (int j = 0; j < touchzone.Count ; j++)
+            {
+                touchzone[j] = edges[j].relativeLocation;
+
+            }
 
         }
 
 
         public override void render(Graphics g)
         {
-           
-            Pen pen = new Pen(Color.Red, 4);
-
-           
-            
-            for (int j = 0; j < rellocpoints.Count-1; j++)
+            Pen pen = new Pen(Color.Red, 1);
+            g.DrawRectangle(pen,new Rectangle(relativeLocation.X-5, relativeLocation.Y - 5, 10, 10));
+            for (int j = 0; j < edges.Count ; j++)
             {
-                
-                g.DrawLine(pen,rellocpoints[j], rellocpoints[j+1]);
-                
+                edges[j].render(g);
                
             }
-            
-                g.DrawLine(pen, rellocpoints[0], rellocpoints[rellocpoints.Count-1]);
+            for (int j = 0; j < walls.Count ; j++)
+            {
+                walls[j].render(g);
 
-            pen = new Pen(Color.Blue, 2);
-         //   g.DrawRectangle(pen,touchrect);
+            }
 
-
+   
         }
         public override void move(Point coord)
         {
-            location = coord;
-            locpoints[0] = location ;
-                
-                for (int i = 1; i < rellocpoints.Count; i++)
-                {
-                    locpoints[i] = new Point(coord.X + dest[i - 1].X, coord.Y + dest[i - 1].Y);
+                relativeLocation = coord;
+                location = new Point(relativeLocation.X - MapCamera.getWorldLoc().X, relativeLocation.Y - MapCamera.getWorldLoc().Y);
 
-                }
-
+            for (int j = 0; j < edges.Count; j++)
+            {
+                edges[j].move(new Point(coord.X-dest[j].X, coord.Y - dest[j].Y));
+            }
         }
 
         public override bool touchhit(Point coord)
         {
             return base.touchhit(coord);
-
         }
 
-        public void addEdge(Point coord)
+        public override void setedgescount(int count)
         {
-            locpoints.Add(coord);
-            rellocpoints.Add(coord);
+            if (count == edges.Count)
+            { return; }
+            if (count > edges.Count)
+            {
+                for (int i = 0; i < count - edges.Count; i++)
+                {
+                DrawMap.floors[DrawMap.selectedfloor].drawObjects.elements.Add(new Edge(new Point(edges[edges.Count - 1].location.X - 15, edges[edges.Count - 1].location.Y - 15)));
+                    
+                    DrawMap.floors[DrawMap.selectedfloor].drawObjects.edges.Add(new Edge(new Point(edges[edges.Count-1].location.X-10, edges[edges.Count - 1].location.Y - 10)));
+                    DrawMap.floors[DrawMap.selectedfloor].drawObjects.rasst();
+                    edges.Add(DrawMap.floors[DrawMap.selectedfloor].drawObjects.edges[DrawMap.floors[DrawMap.selectedfloor].drawObjects.edges.Count-1]);
+                    walls.RemoveAt(walls.Count-1);
+                    walls.Add(new Wall(edges[edges.Count-2], edges[edges.Count - 1]));
+                    walls.Add(new Wall(edges[edges.Count - 1], edges[0]));
 
+                    dest.Add(new Point(0,0));
+                    touchzone.Add(edges[edges.Count-1].relativeLocation);
+                    bordType.Add(1);
+
+
+                }
+            }
+            if (count < edges.Count)
+            {
+                for (int i = edges.Count - 1; i > count - 1; i--)
+                {
+                    edges.RemoveAt(i);
+                    dest.RemoveAt(i);
+                    touchzone.RemoveAt(i);
+                    bordType.RemoveAt(i);
+
+                }
+            }
         }
     }
 }

@@ -88,7 +88,8 @@ namespace MapRedPc.code
             g.DrawRectangle(pen, screenRect.X, screenRect.Y, screenRect.Width, screenRect.Height);
               Font fnt = new Font("Arial", 10);
               SolidBrush brsh = new SolidBrush(Color.Red);
-            g.DrawString("WORLDLOC:" + worldlocation.X + "." + worldlocation.Y + "", fnt, brsh, new Point(700, 75));
+            g.DrawString("left:" + MyMouseManager.left + "  right:" + MyMouseManager.right , fnt, brsh, new Point(700, 75));
+            g.DrawString("WORLDLOC:" + worldlocation.X + "." + worldlocation.Y + "", fnt, brsh, new Point(700, 40));
             g.DrawString("mousecoord:" + mousecoord.X + "." + mousecoord.Y+"", fnt, brsh, new Point(700, 100));
             g.DrawString("Lefttouch:" + lefttouch.X + "." + lefttouch.Y + "", fnt, brsh, new Point(700, 115));
             g.DrawString("Righttouch:" + righttouch.X + "." + righttouch.Y + "", fnt, brsh, new Point(700, 130));

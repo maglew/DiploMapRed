@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MapRedPc.code
 {
+    [Serializable]
     class DrawObjects
     {
        

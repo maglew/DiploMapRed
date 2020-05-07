@@ -12,7 +12,7 @@ namespace MapRedPc.code
         
         private bool running = false;
 
-        MapManager mapManager;
+       // MapManager mapManager;
         private Thread th;
         
         Graphics g;
@@ -27,8 +27,8 @@ namespace MapRedPc.code
             btm = new Bitmap(picturebox.Width, picturebox.Height);
             g = Graphics.FromImage(btm);
             fg = picturebox.CreateGraphics();
-            mapManager = new MapManager();
-            
+            // mapManager = new MapManager();
+            new MapManager();
 
         }
 
@@ -52,15 +52,15 @@ namespace MapRedPc.code
 
         public void tick()
         {
-            mapManager.tick();
-            
-            
+            //mapManager.tick();
+            MapManager.tick();
+
         }
 
         public void render()
         {
-            mapManager.render(g);
-            
+            // mapManager.render(g);
+            MapManager.render(g);
         }
 
 

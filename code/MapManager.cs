@@ -10,31 +10,31 @@ namespace MapRedPc.code
     class MapManager
     {
        // MapCamera mapCamera;
-        DrawObjects drawObjects;
-      //  DrawMap map;
-       MapInterface mapin;
+      static  DrawObjects drawObjects;
+      public static DrawMap map { get; set; }
+      static  MapInterface mapin;
 
-        public MapManager()
+        public  MapManager()
         {
             drawObjects = new DrawObjects();
             mapin = new MapInterface();
-             new DrawMap();
+           map=new DrawMap();
             // mapCamera = new MapCamera();
            
         }
 
-        public void render(Graphics g)
+        public static void render(Graphics g)
         {
             // drawObjects.render(g);
-            DrawMap.render(g);
+            map.render(g);
             MapCamera.render(g);
             MapInterface.render(g);
         }
 
-        public void tick()
+        public static void tick()
         {
             MapCamera.tick();
-            DrawMap.tick(MapCamera.getWorldLoc(), MapCamera.size);
+            map.tick(MapCamera.getWorldLoc(), MapCamera.size);
             //  drawObjects.tick(MapCamera.getWorldLoc(), MapCamera.size);
             mapin.tick();
         }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MapRedPc.code
 {
+    [Serializable]
     class DrawMapFloor
     {
        public DrawObjects drawObjects;

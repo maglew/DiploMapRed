@@ -29,7 +29,7 @@ namespace MapRedPc
             textBox1.Text = objId.ToString();
             MapInterface.opened = true;
             MapInterface.schot++;
-                tempElement = DrawMap.floors[DrawMap.selectedfloor].drawObjects.getElement(objId);
+                tempElement = MapManager.map.floors[DrawMap.selectedfloor].drawObjects.getElement(objId);
                 textBox2.Text = tempElement.location.X.ToString();
                 textBox5.Text = tempElement.location.Y.ToString();
                 textBox7.Text = tempElement.relativeLocation.X.ToString();
@@ -56,7 +56,7 @@ namespace MapRedPc
         {
            
                 tempElement.location = new Point(Int32.Parse(textBox2.Text), Int32.Parse(textBox5.Text));
-            DrawMap.floors[DrawMap.selectedfloor].drawObjects.setElement(tempElement);
+            MapManager.map.floors[DrawMap.selectedfloor].drawObjects.setElement(tempElement);
             
            
            

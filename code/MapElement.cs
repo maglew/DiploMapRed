@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 
 namespace MapRedPc.code
 {
+    [Serializable]
     abstract class MapElement
     {
         // public Rectangle touchrect = new Rectangle(0, 0, 0, 0);

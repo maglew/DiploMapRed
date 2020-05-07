@@ -59,7 +59,9 @@ namespace MapRedPc
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            DrawMap.save(tempath+@"\"+"TcMap.txt");
+            //DrawMap.save(tempath+@"\"+"TcMap.txt");
+            MapManager.map.saveSer(tempath + @"\" );
+            this.Close();
         }
 
         public void pathclean()

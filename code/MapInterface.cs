@@ -29,8 +29,8 @@ namespace MapRedPc.code
                     
                     if (MyMouseManager.left)
                     {   typeObj = "";
-                        DrawMap.floors[DrawMap.selectedfloor].drawObjects.delobj(DrawMap.floors[DrawMap.selectedfloor].drawObjects.searchObjByCoord(MapCamera.lefttouch));
-                        chosedObjId = DrawMap.floors[DrawMap.selectedfloor].drawObjects.searchObjByCoord(MapCamera.lefttouch);
+                        MapManager.map.floors[DrawMap.selectedfloor].drawObjects.delobj(MapManager.map.floors[DrawMap.selectedfloor].drawObjects.searchObjByCoord(MapCamera.lefttouch));
+                        chosedObjId = MapManager.map.floors[DrawMap.selectedfloor].drawObjects.searchObjByCoord(MapCamera.lefttouch);
                         typeObj = "";
                     }
                     break;
@@ -38,19 +38,19 @@ namespace MapRedPc.code
 
                     if (typeObj == "Edge" && MyMouseManager.left && schot == 0)
                     {
-                        DrawMap.floors[DrawMap.selectedfloor].drawObjects.addNewEdge(new Point(MapCamera.lefttouch.X - MapCamera.worldlocation.X, MapCamera.lefttouch.Y - MapCamera.worldlocation.Y));
+                        MapManager.map.floors[DrawMap.selectedfloor].drawObjects.addNewEdge(new Point(MapCamera.lefttouch.X - MapCamera.worldlocation.X, MapCamera.lefttouch.Y - MapCamera.worldlocation.Y));
                         schot++;
                     }
                     if (typeObj == "Room" && MyMouseManager.left && schot == 0)
                     {
-                        DrawMap.floors[DrawMap.selectedfloor].drawObjects.addNewRoom(new Point(MapCamera.lefttouch.X - MapCamera.worldlocation.X, MapCamera.lefttouch.Y - MapCamera.worldlocation.Y));
+                        MapManager.map.floors[DrawMap.selectedfloor].drawObjects.addNewRoom(new Point(MapCamera.lefttouch.X - MapCamera.worldlocation.X, MapCamera.lefttouch.Y - MapCamera.worldlocation.Y));
                         schot++;
                     }
                     if (typeObj == "Wall" && MyMouseManager.left && schot == 0)
                     {
 
-                        chosedObjId = DrawMap.floors[DrawMap.selectedfloor].drawObjects.searchObjByCoord(MapCamera.lefttouch);
-                        if (chosedObjId!=-1&& DrawMap.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId) is Edge)
+                        chosedObjId = MapManager.map.floors[DrawMap.selectedfloor].drawObjects.searchObjByCoord(MapCamera.lefttouch);
+                        if (chosedObjId!=-1&& MapManager.map.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId) is Edge)
                         {
                             if (A == -1)
                             { A = chosedObjId;
@@ -60,7 +60,7 @@ namespace MapRedPc.code
                             { B = chosedObjId; }
                             if (B != -1 && A != -1&&B!=A)
                             {
-                                DrawMap.floors[DrawMap.selectedfloor].drawObjects.addNewWall(A,B);
+                                MapManager.map.floors[DrawMap.selectedfloor].drawObjects.addNewWall(A,B);
                                 schot++;
                                 chosedObjId = -1;
                                 
@@ -83,11 +83,11 @@ namespace MapRedPc.code
                     typeObj = "";
                     if (MyMouseManager.left)
                     {
-                        chosedObjId = DrawMap.floors[DrawMap.selectedfloor].drawObjects.searchObjByCoord(MapCamera.lefttouch);
+                        chosedObjId = MapManager.map.floors[DrawMap.selectedfloor].drawObjects.searchObjByCoord(MapCamera.lefttouch);
                         if (chosedObjId != -1)
                         {
 
-                            if (!opened && DrawMap.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId) is Edge)
+                            if (!opened && MapManager.map.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId) is Edge)
                             {
                                 objRedForm = new EdgeChangeForm(chosedObjId);
                                 objRedForm.ShowDialog();
@@ -96,7 +96,7 @@ namespace MapRedPc.code
                                 break;
                             }
 
-                            if (!opened && DrawMap.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId) is MapZone)
+                            if (!opened && MapManager.map.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId) is MapZone)
                             {
                                 ZoneChangeForm roomChangeForm = new ZoneChangeForm(chosedObjId);
                                 roomChangeForm.ShowDialog();
@@ -104,7 +104,7 @@ namespace MapRedPc.code
 
                                 break;
                             }
-                            if (!opened && DrawMap.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId) is Room)
+                            if (!opened && MapManager.map.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId) is Room)
                             {
                                 RoomChangeForm roomChangeForm = new RoomChangeForm(chosedObjId);
                                 roomChangeForm.ShowDialog();
@@ -133,19 +133,19 @@ namespace MapRedPc.code
                     {
                         if (!dragged)
                         {
-                            chosedObjId = DrawMap.floors[DrawMap.selectedfloor].drawObjects.searchObjByCoord(MapCamera.lefttouch);
+                            chosedObjId = MapManager.map.floors[DrawMap.selectedfloor].drawObjects.searchObjByCoord(MapCamera.lefttouch);
                             dragged = true;
                             razn = new Point(0, 0);
                             if (chosedObjId != -1)
                             {
-                                razn.X = MapCamera.lefttouch.X - DrawMap.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId).relativeLocation.X;
-                                razn.Y = MapCamera.lefttouch.Y - DrawMap.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId).relativeLocation.Y;
+                                razn.X = MapCamera.lefttouch.X - MapManager.map.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId).relativeLocation.X;
+                                razn.Y = MapCamera.lefttouch.Y - MapManager.map.floors[DrawMap.selectedfloor].drawObjects.getElement(chosedObjId).relativeLocation.Y;
                             }
                         }
 
                         if (chosedObjId != -1 && MyMouseManager.left)
                         {
-                            DrawMap.floors[DrawMap.selectedfloor].drawObjects.moveElement(chosedObjId, new Point(MyMouseManager.mousecoord.X - razn.X, MyMouseManager.mousecoord.Y - razn.Y));
+                            MapManager.map.floors[DrawMap.selectedfloor].drawObjects.moveElement(chosedObjId, new Point(MyMouseManager.mousecoord.X - razn.X, MyMouseManager.mousecoord.Y - razn.Y));
                         }
 
                         

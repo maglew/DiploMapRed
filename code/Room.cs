@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MapRedPc.code
 {
+    [Serializable]
     class Room : MapElement
     {
        
@@ -131,11 +132,11 @@ namespace MapRedPc.code
             {
                 for (int i = 0; i < count - edges.Count; i++)
                 {
-                DrawMap.floors[DrawMap.selectedfloor].drawObjects.elements.Add(new Edge(new Point(edges[edges.Count - 1].location.X - 15, edges[edges.Count - 1].location.Y - 15)));
-                    
-                    DrawMap.floors[DrawMap.selectedfloor].drawObjects.edges.Add(new Edge(new Point(edges[edges.Count-1].location.X-10, edges[edges.Count - 1].location.Y - 10)));
-                    DrawMap.floors[DrawMap.selectedfloor].drawObjects.rasst();
-                    edges.Add(DrawMap.floors[DrawMap.selectedfloor].drawObjects.edges[DrawMap.floors[DrawMap.selectedfloor].drawObjects.edges.Count-1]);
+                    MapManager.map.floors[DrawMap.selectedfloor].drawObjects.elements.Add(new Edge(new Point(edges[edges.Count - 1].location.X - 15, edges[edges.Count - 1].location.Y - 15)));
+
+                    MapManager.map.floors[DrawMap.selectedfloor].drawObjects.edges.Add(new Edge(new Point(edges[edges.Count-1].location.X-10, edges[edges.Count - 1].location.Y - 10)));
+                    MapManager.map.floors[DrawMap.selectedfloor].drawObjects.rasst();
+                    edges.Add(MapManager.map.floors[DrawMap.selectedfloor].drawObjects.edges[MapManager.map.floors[DrawMap.selectedfloor].drawObjects.edges.Count-1]);
                     walls.RemoveAt(walls.Count-1);
                     walls.Add(new Wall(edges[edges.Count-2], edges[edges.Count - 1]));
                     walls.Add(new Wall(edges[edges.Count - 1], edges[0]));

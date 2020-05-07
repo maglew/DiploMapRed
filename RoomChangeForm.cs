@@ -20,7 +20,7 @@ namespace MapRedPc
         {
             InitializeComponent();
             this.objId = objId;
-            mapel = DrawMap.floors[DrawMap.selectedfloor].drawObjects.getElement(objId);
+            mapel = MapManager.map.floors[DrawMap.selectedfloor].drawObjects.getElement(objId);
         }
 
         private void RoomChangeForm_Load(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace MapRedPc
             mapel.location = new Point(Int32.Parse(textBox1.Text), Int32.Parse(textBox2.Text));
             mapel.text = textBox5.Text;
             mapel.setedgescount(Int32.Parse(textBox6.Text));
-            DrawMap.floors[DrawMap.selectedfloor].drawObjects.setElement(mapel);
+            MapManager.map.floors[DrawMap.selectedfloor].drawObjects.setElement(mapel);
             this.Close();
         }
 

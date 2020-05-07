@@ -5,6 +5,7 @@ using System.Drawing;
 
 namespace MapRedPc.code
 {
+    [Serializable]
     class Edge : MapElement
     {
       //  int num = 0;
